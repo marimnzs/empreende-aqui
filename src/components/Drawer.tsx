@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, ChakraProvider } from '@chakra-ui/react';
 import { StarIcon, EmailIcon, ChatIcon, ArrowUpIcon, Icon } from '@chakra-ui/icons';
 
-const FixedDrawer = () => {
+const FixedDrawer: React.FC = () => {
   return (
     <ChakraProvider>
       <Box

@@ -1,35 +1,21 @@
 import React from "react";
-import { Box, Text, Heading } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Box, Text } from "@chakra-ui/react";
+import { Link, useLocation } from "react-router-dom";
+import { ChevronDownIcon, ChevronRightIcon } from '@chakra-ui/icons';
+import { useWindowWidth } from "../utils/useWindowWidth";
 
 const menuItems = [
-  {
-    "path": "/",
-    "name": "Início"
-  },
-  {
-    "path": "/",
-    "name": "Lorem"
-  },
-  {
-    "path": "/",
-    "name": "Lorem-ipsum"
-  },
-  {
-    "path": "/",
-    "name": "Ipsum Lorem Sum"
-  },
-  {
-    "path": "/",
-    "name": "Lorem"
-  },
-  {
-    "path": "/relatorio",
-    "name": "Recebimento"
-  },
+  { path: "/", name: "INÍCIO", icon: false },
+  { path: "/", name: "LOREM", icon: true },
+  { path: "/", name: "LOREM-IPSUM", icon: true },
+  { path: "/", name: "IPSUM LOREM", icon: true },
+  { path: "/relatorio", name: "RECEBIMENTO", icon: true },
 ];
 
 const Header: React.FC = () => {
+  const location = useLocation();
+  const width = useWindowWidth();
+
   return (
     <Box
       position="fixed"
@@ -42,13 +28,23 @@ const Header: React.FC = () => {
       alignItems="center"
       width="100%"
       height="70px"
-      gap="20px"
+      gap={width < 768 ? "0px" : "20px"}
+      zIndex={1000}
     >
       {menuItems.map((item, index) => (
         <Link key={index} to={item.path} style={{ textDecoration: "none", marginLeft: "20px" }}>
-          <Text fontSize="lg" fontWeight="bold">
-            {item.name}
-          </Text>
+          <Box
+            display="flex"
+            flexDirection="row"
+            gap="5px"
+            alignItems="center"
+            color={item.path === location.pathname ? "rgba(0, 193, 235, 1)" : "white"}
+          >
+            <Text fontSize="14px" fontWeight="700">
+              {item.name}
+            </Text>
+            {item.icon && (item.path === location.pathname ? <ChevronRightIcon /> : <ChevronDownIcon />)}
+          </Box>
         </Link>
       ))}
     </Box>
