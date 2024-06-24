@@ -4,29 +4,30 @@ import { Box, Text, Button } from "@chakra-ui/react";
 const AdsCard: React.FC = () => {
   return (
     <Box
-      height="100vh"
+      height="100%"
       marginTop="100px"
       alignItems="center"
       display="flex"
       flexDirection="column"
-      gap="50px"
+      gap="60px"
       maxWidth="260px"
+      padding="10px"
     >
-      <Box display="flex" flexDirection="column"justifyContent="center" alignItems="center" gap="10px">
-      <Box
+      <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center" gap="10px">
+        <Box
         borderRadius="25px"
         padding="8px 16px 8px 16px"
         backgroundColor="rgba(215, 58, 8, 1)"
         >
           <Text color="white">Lorem.</Text>
         </Box>
-      <Box
-        width="17px"
+        <Box
+          width="17px"
         height="12px"
         background="rgba(255, 100, 7, 1)"
         clipPath="polygon(50% 100%, 0 0, 100% 0)"
         borderRadius="5px"
-       />
+        />
        </Box>
        <Box
         display="flex"
@@ -50,12 +51,13 @@ const AdsCard: React.FC = () => {
         flexDirection="column"
         alignItems="center"
         justifyContent="center"
+        gap="20px"
        >
-        <Text fontSize="25px" fontWeight="600">
+        <Text fontSize="25px" fontWeight="600" textAlign="center">
           Lorem ipsum.
         </Text>
-        <Text >R$78,85</Text>
-        <Text textAlign="center">Lorem ipsum dolor sit amet consectetur adipiscing elit Ut.</Text>
+        <Text fontSize="23px">R$78,85</Text>
+        <Text textAlign="center" fontSize="18px">Lorem ipsum dolor sit amet consectetur adipiscing elit Ut.</Text>
        </Box>
        <Button
         backgroundColor="rgba(0, 39, 78, 1)"

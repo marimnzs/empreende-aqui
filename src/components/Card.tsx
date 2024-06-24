@@ -68,7 +68,7 @@ const CardComponent: React.FC = () => {
             borderWidth="1px"
             borderColor="rgba(0, 39, 78, 0.4)"
             _hover={{
-              backgroundColor: 'rgba(0, 39, 78, 0.2)',
+              backgroundColor: 'rgba(0, 39, 78, 0.3)',
             }}
           >
             {item.svg}
