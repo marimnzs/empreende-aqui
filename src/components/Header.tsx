@@ -3,30 +3,11 @@ import { Box, Text, Heading } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
 const menuItems = [
-  {
-    "path": "/",
-    "name": "Início"
-  },
-  {
-    "path": "/",
-    "name": "Lorem"
-  },
-  {
-    "path": "/",
-    "name": "Lorem-ipsum"
-  },
-  {
-    "path": "/",
-    "name": "Ipsum Lorem Sum"
-  },
-  {
-    "path": "/",
-    "name": "Lorem"
-  },
-  {
-    "path": "/relatorio",
-    "name": "Recebimento"
-  },
+  { path: "/", name: "Início" },
+  { path: "/lorem", name: "Lorem" },
+  { path: "/lorem-ipsum", name: "Lorem-ipsum" },
+  { path: "/ipsum-lorem-sum", name: "Ipsum Lorem Sum" },
+  { path: "/recebimento", name: "Recebimento" },
 ];
 
 const Header: React.FC = () => {
@@ -43,6 +24,7 @@ const Header: React.FC = () => {
       width="100%"
       height="70px"
       gap="20px"
+      zIndex={1000}
     >
       {menuItems.map((item, index) => (
         <Link key={index} to={item.path} style={{ textDecoration: "none", marginLeft: "20px" }}>

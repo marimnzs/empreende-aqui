@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box } from '@chakra-ui/react';
+import { Box, Input, Select } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 import {
   Breadcrumb,
@@ -11,25 +11,38 @@ import {
 } from '../components/index'
 
 const ReceiptScreen: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
       <Drawer />
       <Header />
-      <AdsCard />
-    <Box 
-      display="flex"
-      flexDirection="column"
-      marginTop="100px"
-      marginLeft="100px"
-      width="100%"
-      height="100vh"
+      <Box
+        display="flex"
+        flexDirection="row"
+        gap="10px"
       >
-      <Breadcrumb />
-      <Button colorScheme="teal" rightIcon={<ChevronDownIcon />} onClick={() => setIsOpen(true)}>Novo recebimento</Button>
+        <Box 
+          display="flex"
+          flexDirection="column"
+          marginTop="100px"
+          marginLeft="100px"
+          width="100%"
+          >
+          <Breadcrumb />
+          <Box
+            display="flex"
+            flexDirection="row"
+            justifyContent="space-around"
+          >
+            <Button colorScheme="teal" rightIcon={<ChevronDownIcon />} onClick={() => setIsOpen(true)}>Novo recebimento</Button>
+            <Select placeholder="Nome da conta"/>
+            <Input placeholder="Pesquisar" />
+          </Box>
+        </Box>
+        <AdsCard />
+      </Box>
       <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} />
-    </Box>
     </>
   );
 }
