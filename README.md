@@ -1,16 +1,16 @@
 # Empreende-aqui
 
-Projeto desenvolvido em react para gerenciamento de negócios.
+Projeto desenvolvido em React para gerenciamento de negócios.
 
 ## Funcionalidades
 
-- Home (página de seleção de funcionalidade)
-- Recebimento (página onde é possível visualizar os recebimentos e adicionar um novo)
+- **Home:** Página de seleção de funcionalidade.
+- **Recebimento:** Página onde é possível visualizar os recebimentos e adicionar um novo.
 
 ## Tecnologias Utilizadas
 
 - React
-- Typescript
+- TypeScript
 - ChakraUI
 - React Router
 
@@ -23,15 +23,21 @@ Projeto desenvolvido em react para gerenciamento de negócios.
 
 2. Abra o projeto no VScode.
 
-3. Sincronize o yarn.
+3. Sincronize as dependências do projeto utilizando Yarn:
+    ```sh
+    yarn
+    ```
 
-4. Execute o aplicativo com yarn start.
+4. Inicie o aplicativo localmente:
+    ```sh
+    yarn start
+    ```
 
+   O aplicativo será executado em modo de desenvolvimento. Abra [http://localhost:3000](http://localhost:3000) no seu navegador para visualizá-lo.
 
 ## Contribuição
 
 Se você quiser contribuir com este projeto, sinta-se à vontade para abrir uma issue ou enviar um pull request.
-
 
 ---
 
