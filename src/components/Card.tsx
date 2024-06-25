@@ -26,7 +26,7 @@ const cardItems = [
   {
     title: "Recebimento",
     svg: <Receipt />,
-    path: "/relatorio",
+    path: "/recebimento",
     alt: "Ícone de Recebimento",
   },
   {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, ButtonProps, Divider } from '@chakra-ui/react';
+import { Button, ButtonProps } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 interface Props {
   icon?: boolean;
@@ -12,7 +12,7 @@ const ButtonComponent: React.FC<ButtonProps & Props> = ({ icon, text, ...props }
       {...props}
       backgroundColor="#00B050"
       _hover={{ backgroundColor: '#006930' }}
-      rightIcon={icon? <ChevronDownIcon /> : undefined}
+      rightIcon={icon? <ChevronDownIcon/> : undefined}
       width="100%"
     >
       {text}

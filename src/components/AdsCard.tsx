@@ -13,13 +13,21 @@ const AdsCard: React.FC = () => {
       maxWidth="260px"
       padding="10px"
     >
-      <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center" gap="10px">
+      <Box 
+        display="flex" 
+        flexDirection="column" 
+        justifyContent="center" 
+        alignItems="center" 
+        gap="10px"
+      >
         <Box
-        borderRadius="25px"
-        padding="8px 16px 8px 16px"
-        backgroundColor="rgba(215, 58, 8, 1)"
+          borderRadius="25px"
+          padding="8px 16px 8px 16px"
+          backgroundColor="rgba(215, 58, 8, 1)"
         >
-          <Text color="white">Lorem.</Text>
+          <Text color="white">
+            Lorem.
+          </Text>
         </Box>
         <Box
           width="17px"
@@ -53,10 +61,23 @@ const AdsCard: React.FC = () => {
         justifyContent="center"
         gap="20px"
        >
-        <Text fontSize="25px" fontWeight="600" textAlign="center">
+        <Text 
+          fontSize="25px" 
+          fontWeight="600" 
+          textAlign="center"
+        >
           Lorem ipsum.
         </Text>
-        <Text fontSize="23px">R$78,85</Text>
+        <Text fontSize="23px">
+          R$
+          <Text 
+            as="span" 
+            fontSize="35px"
+          >
+            78
+          </Text>
+          ,85
+        </Text>
         <Text textAlign="center" fontSize="18px">Lorem ipsum dolor sit amet consectetur adipiscing elit Ut.</Text>
        </Box>
        <Button

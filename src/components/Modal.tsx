@@ -17,7 +17,7 @@ import {
   Button,
   useToast
 } from '@chakra-ui/react';
-import { Button as ButtonComponent } from "./index";
+import { Button as ButtonComponent, Toast } from "./index";
 
 interface ModalProps {
   isOpen: boolean;
@@ -38,7 +38,8 @@ const ModalComponent: React.FC<ModalProps> = ({
   onClose,
   onConfirm
 }) => {
-  const toast = useToast()
+  const [isFormValid, setIsFormValid] = useState(false);
+  const [showToast, setShowToast] = useState(false);
   const [formData, setFormData] = useState<FormData>({
     contaBancaria: "",
     contaDestino: "",
@@ -46,8 +47,6 @@ const ModalComponent: React.FC<ModalProps> = ({
     transferencia: "",
     valor: ""
   });
-
-  const [isFormValid, setIsFormValid] = useState(false);
 
   useEffect(() => {
     const { contaBancaria, contaDestino, descricao, transferencia, valor } = formData;
@@ -69,17 +68,11 @@ const ModalComponent: React.FC<ModalProps> = ({
       transferencia: "",
       valor: ""
     });
-    toast({
-      title: 'Sucesso!',
-      description: "Recebimento feito com sucesso!",
-      status: 'success',
-      duration: 9000,
-      isClosable: true,
-      position: 'top-right'
-    })
+    setShowToast(true);
   };
 
   return (
+    <>
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
       <ModalContent>
@@ -136,6 +129,7 @@ const ModalComponent: React.FC<ModalProps> = ({
                   <Input 
                     type="date"
                     name="transferencia"
+                    pattern="\d{2}/\d{2}/\d{2}"
                     value={formData.transferencia}
                     onChange={handleChange}
                     isRequired
@@ -177,6 +171,13 @@ const ModalComponent: React.FC<ModalProps> = ({
         </ModalFooter>
       </ModalContent>
     </Modal>
+    {showToast && (
+        <Toast
+          title='Sucesso!'
+          description='Recebimento feito com sucesso!'
+        />
+      )}
+    </>
   );
 }
 

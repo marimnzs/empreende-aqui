@@ -9,3 +9,5 @@ export { default as Reload } from './reload';
 export { default as Bomb } from './bomb';
 export { default as Menu } from './menu';
 export { default as BankAccount } from './bankAccount';
+export { default as Search } from './search';
+export { default as Check } from './check';
