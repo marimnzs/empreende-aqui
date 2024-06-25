@@ -1,5 +1,21 @@
-import React, { useState } from 'react';
-import { Box, TableContainer, Input, InputLeftElement, InputRightElement, InputGroup, Select, Checkbox, SimpleGrid, Table, Thead, Tbody, Tr, Th, Td } from '@chakra-ui/react';
+import React, { useState, useEffect } from 'react';
+import { 
+  Box, 
+  TableContainer, 
+  Input, 
+  InputLeftElement, 
+  InputRightElement, 
+  InputGroup, 
+  Select, 
+  Checkbox, 
+  SimpleGrid, 
+  Table, 
+  Thead, 
+  Tbody, 
+  Tr, 
+  Th, 
+  Td 
+} from '@chakra-ui/react';
 import {
   Breadcrumb,
   Button,
@@ -9,11 +25,10 @@ import {
   AdsCard,
   ReceiptCard
 } from '../components/index';
-import { ArrowUp, Reload, Bomb, Menu, BankAccount } from "../assets/icons/index";
+import { ArrowUp, Reload, Bomb, Menu, BankAccount, Search } from "../assets/icons/index";
 import { useWindowWidth } from "../utils/useWindowWidth";
-import {SearchIcon} from '@chakra-ui/icons';
 
-const receiptData = {
+const initialReceiptData = {
   receipts: [
     {
       id: 1,
@@ -49,7 +64,8 @@ const receiptData = {
 const ReceiptScreen: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [clickedCardId, setClickedCardId] = useState<number | null>(null);
-  const [receipts, setReceipts] = useState(receiptData.receipts);
+  const [receipts, setReceipts] = useState(initialReceiptData.receipts);
+
   const windowWidth = useWindowWidth();
 
   const handleCardClick = (id: number) => {
@@ -118,9 +134,22 @@ const ReceiptScreen: React.FC = () => {
       status: "Recebida",
       dueDate: data.transferencia
     };
-    setReceipts([...receipts, newReceipt]);
+
+    const updatedReceipts = [...receipts, newReceipt];
+    setReceipts(updatedReceipts);
+
+    localStorage.setItem('receiptData', JSON.stringify({ receipts: updatedReceipts }));
     setIsOpen(false);
   };
+
+  useEffect(() => {
+    const storedReceiptData = localStorage.getItem('receiptData');
+    if (storedReceiptData) {
+      setReceipts(JSON.parse(storedReceiptData).receipts);
+    } else {
+      localStorage.setItem('receiptData', JSON.stringify(initialReceiptData));
+    }
+  }, []);
 
   return (
     <>
@@ -161,7 +190,7 @@ const ReceiptScreen: React.FC = () => {
             <InputGroup>
             <InputRightElement
               pointerEvents="none"
-              children={<SearchIcon color="gray.300"/>}
+              children={<Search />}
             />
             <Input type="text" placeholder="Pesquisar" />
           </InputGroup>

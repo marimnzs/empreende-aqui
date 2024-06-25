@@ -8,7 +8,7 @@ const BreadcrumbCustom: React.FC = () => {
 
   const activeRoute = (path: string) => {
     switch (path) {
-      case '/relatorio':
+      case '/recebimento':
         return 'Recebimento';
       case '/':
         return 'Início';
@@ -20,11 +20,23 @@ const BreadcrumbCustom: React.FC = () => {
   return (
   <Breadcrumb spacing='8px' separator={<ChevronRightIcon color='gray.500' />}>
     <BreadcrumbItem>
-      <BreadcrumbLink href='/' textDecoration="none">Início</BreadcrumbLink>
+      <BreadcrumbLink 
+        href='/' 
+        textDecoration="none"
+      >
+        Início
+      </BreadcrumbLink>
     </BreadcrumbItem>
 
     <BreadcrumbItem>
-      <BreadcrumbLink href={location.pathname} textDecoration="none" fontWeight="600" fontStyle="italic">{activeRoute(location.pathname)}</BreadcrumbLink>
+      <BreadcrumbLink 
+        href={location.pathname} 
+        textDecoration="none" 
+        fontWeight="600" 
+        fontStyle="italic"
+      >
+        {activeRoute(location.pathname)}
+      </BreadcrumbLink>
     </BreadcrumbItem>
 
   </Breadcrumb>

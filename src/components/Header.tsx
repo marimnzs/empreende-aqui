@@ -6,10 +6,10 @@ import { useWindowWidth } from "../utils/useWindowWidth";
 
 const menuItems = [
   { path: "/", name: "INÍCIO", icon: false },
-  { path: "/", name: "LOREM", icon: true },
-  { path: "/", name: "LOREM-IPSUM", icon: true },
-  { path: "/", name: "IPSUM LOREM", icon: true },
-  { path: "/relatorio", name: "RECEBIMENTO", icon: true },
+  { path: "#", name: "LOREM", icon: true },
+  { path: "#", name: "LOREM-IPSUM", icon: true },
+  { path: "#", name: "IPSUM LOREM", icon: true },
+  { path: "/recebimento", name: "RECEBIMENTO", icon: true },
 ];
 
 const Header: React.FC = () => {

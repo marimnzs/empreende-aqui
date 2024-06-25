@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { ChakraProvider } from '@chakra-ui/react';
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import HomeScreen from './screens/HomeScreen';
@@ -10,7 +9,7 @@ function App() {
     <ChakraProvider>
       <Routes>
         <Route path="/" element={<HomeScreen />} />
-        <Route path="/relatorio" element={<ReceiptScreen />} />
+        <Route path="/recebimento" element={<ReceiptScreen />} />
       </Routes>
     </ChakraProvider>
     </Router>
