@@ -146,7 +146,13 @@ const ReceiptScreen: React.FC = () => {
             gap="10px"
           >
             <Box width="100%">
-              <Button text="Novo recebimento" icon colorScheme="teal" onClick={() => setIsOpen(true)}>Novo recebimento</Button>
+              <Button 
+              text="Novo recebimento" 
+              icon colorScheme="teal" 
+              onClick={() => setIsOpen(true)}
+            >
+              Novo recebimento
+            </Button>
             </Box>
             <InputGroup>
               <InputLeftElement pointerEvents="none" >
