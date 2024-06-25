@@ -39,7 +39,6 @@ const ModalComponent: React.FC<ModalProps> = ({
   onClose,
   onConfirm
 }) => {
-  const [showToast, setShowToast] = useState(false);
   const [isFormValid, setIsFormValid] = useState(false);
   const [formData, setFormData] = useState<FormData>({
     contaBancaria: "",
