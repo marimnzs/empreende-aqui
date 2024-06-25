@@ -17,7 +17,8 @@ import {
   Button,
   useToast
 } from '@chakra-ui/react';
-import { Button as ButtonComponent, Toast } from "./index";
+import { Button as ButtonComponent } from "./index";
+import { formatDate } from '../utils/validators'
 
 interface ModalProps {
   isOpen: boolean;
@@ -39,7 +40,6 @@ const ModalComponent: React.FC<ModalProps> = ({
   onConfirm
 }) => {
   const [isFormValid, setIsFormValid] = useState(false);
-  const [showToast, setShowToast] = useState(false);
   const [formData, setFormData] = useState<FormData>({
     contaBancaria: "",
     contaDestino: "",
@@ -47,6 +47,7 @@ const ModalComponent: React.FC<ModalProps> = ({
     transferencia: "",
     valor: ""
   });
+  const toast = useToast();
 
   useEffect(() => {
     const { contaBancaria, contaDestino, descricao, transferencia, valor } = formData;
@@ -60,7 +61,11 @@ const ModalComponent: React.FC<ModalProps> = ({
   };
 
   const handleConfirmClick = () => {
-    onConfirm(formData);
+    const formattedData = {
+      ...formData,
+      transferencia: formatDate(formData.transferencia),
+    };
+    onConfirm(formattedData);
     setFormData({
       contaBancaria: "",
       contaDestino: "",
@@ -68,24 +73,28 @@ const ModalComponent: React.FC<ModalProps> = ({
       transferencia: "",
       valor: ""
     });
-    setShowToast(true);
+    toast({
+      title: 'Sucesso!',
+      description: 'Recebimento feito com sucesso!',
+      status: 'success',
+      duration: 5000,
+      isClosable: true,
+    });
   };
 
   return (
-    <>
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>Lorem ipsum dolor sit.</ModalHeader>
         <ModalCloseButton />
-        
         <ModalBody>
           <FormControl>
             <Box display="flex" flexDirection="row" gap="10px" mb="4">
               <FormControl isRequired>
                 <FormLabel fontSize="14px">Conta bancária</FormLabel>
                 <InputGroup>
-                  <Select 
+                  <Select
                     name="contaBancaria"
                     value={formData.contaBancaria}
                     onChange={handleChange}
@@ -96,10 +105,9 @@ const ModalComponent: React.FC<ModalProps> = ({
                   </Select>
                 </InputGroup>
               </FormControl>
-
               <FormControl isRequired>
                 <FormLabel fontSize="14px">Conta destino</FormLabel>
-                <Select 
+                <Select
                   name="contaDestino"
                   value={formData.contaDestino}
                   onChange={handleChange}
@@ -110,26 +118,23 @@ const ModalComponent: React.FC<ModalProps> = ({
                 </Select>
               </FormControl>
             </Box>
-
             <FormControl isRequired mb="4">
               <FormLabel fontSize="14px">Descrição</FormLabel>
-              <Input 
+              <Input
                 name="descricao"
                 placeholder="Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et."
                 value={formData.descricao}
                 onChange={handleChange}
-                isRequired 
+                isRequired
               />
             </FormControl>
-
             <Box display="flex" flexDirection="row" gap="10px" mb="4">
               <FormControl isRequired>
                 <FormLabel fontSize="14px">Transferência</FormLabel>
                 <InputGroup>
-                  <Input 
+                  <Input
                     type="date"
                     name="transferencia"
-                    pattern="\d{2}/\d{2}/\d{2}"
                     value={formData.transferencia}
                     onChange={handleChange}
                     isRequired
@@ -142,27 +147,26 @@ const ModalComponent: React.FC<ModalProps> = ({
                   <InputLeftElement pointerEvents="none" color='gray.300'>
                     R$
                   </InputLeftElement>
-                  <Input 
+                  <Input
                     placeholder="1.500,00"
                     type="number"
                     name="valor"
                     value={formData.valor}
                     onChange={handleChange}
-                    isRequired 
+                    isRequired
                   />
                 </InputGroup>
               </FormControl>
             </Box>
           </FormControl>
         </ModalBody>
-
         <ModalFooter justifyContent="space-between">
           <Button backgroundColor="rgba(241, 244, 249, 1)" onClick={onClose}>Cancelar</Button>
           <Box>
-            <ButtonComponent 
-              text="Salvar e enviar" 
-              colorScheme="teal" 
-              onClick={handleConfirmClick} 
+            <ButtonComponent
+              text="Salvar e enviar"
+              colorScheme="teal"
+              onClick={handleConfirmClick}
               isDisabled={!isFormValid}
             >
               Salvar e enviar
@@ -171,13 +175,6 @@ const ModalComponent: React.FC<ModalProps> = ({
         </ModalFooter>
       </ModalContent>
     </Modal>
-    {showToast && (
-        <Toast
-          title='Sucesso!'
-          description='Recebimento feito com sucesso!'
-        />
-      )}
-    </>
   );
 }
 

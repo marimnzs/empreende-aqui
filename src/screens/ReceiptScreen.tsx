@@ -210,6 +210,7 @@ const ReceiptScreen: React.FC = () => {
               />
             ))}
           </SimpleGrid>
+
           <Box marginTop="20px">
             <TableContainer borderRadius="5px">
               <Table variant="simple">
